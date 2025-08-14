@@ -38,6 +38,7 @@ import { Switch } from 'react-native-paper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { reset } from '../../../navigationRef';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const selectionCamera = createRef();
 const selectionCameraForId = createRef();
@@ -55,6 +56,7 @@ const ProfilrPro = props => {
     { name: 'Monthly', type: 'Monthly' },
     // {name: 'Bank Account Detail', type: 'bank_account'},
   ];
+  const [modalVisible, setModalVisible] = useState(false);
   const [toast, setToast] = useContext(ToastContext);
   const [initial, setInitial] = useContext(Context);
   const [filedCheck, setfiledCheck] = useState([]);
@@ -120,7 +122,10 @@ const ProfilrPro = props => {
       headerLeft: () => {
         return (
           <TouchableOpacity onPress={() => {
-            if (isSia !== undefined) {
+            if (verified === 'false') {
+              setToast('Please contact with support'); 
+            }
+            else if (isSia !== undefined) {
               reset('provider')
             } else {
               setToast('Please add your SIA Badge and get access full app');
@@ -302,7 +307,9 @@ const ProfilrPro = props => {
         // console.log('Security Guard Profile:', res.data);
         // console.log(res.data.identity);
         if (res.status) {
-
+if (res.data.verified==='false') {
+  setModalVisible(true)
+}
           setprofile(res?.data || {});
           await AsyncStorage.setItem('profilePic', res?.data?.profile || '');
           console.log('isVerify User ====>', res.data.verified);
@@ -1010,6 +1017,38 @@ const ProfilrPro = props => {
             {/* </View> */}
           </Pressable>
         </Modal>
+        <Modal
+        animationType="none"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View style={{backgroundColor: 'white', alignItems: 'center'}}>
+              <View style={[styles.covline,{width:'100%'}]}>
+                <View></View>
+                <Text style={styles.textStyle5}>Account Suspended </Text>
+                <TouchableOpacity style={styles.croscov} onPress={()=>setModalVisible(false)}>
+                  <Icon name="close" size={30} color="#ff0101ff" />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.textStyle4}>Your account has been suspended. Please contact our support team for assistance.</Text>
+              
+                <TouchableOpacity
+                  activeOpacity={0.9}
+                  onPress={async () => {
+                    setModalVisible(!modalVisible);
+                  }}
+                  style={styles.logOutButtonStyle2}>
+                  <Text style={styles.modalText}>okay</Text>
+                </TouchableOpacity>
+              
+            </View>
+          </View>
+        </View>
+      </Modal>
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );

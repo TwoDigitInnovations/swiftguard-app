@@ -23,6 +23,7 @@ import CustomToaster from './src/Component/CustomToaster';
 import Constants from './src/Helpers/constant';
 import { GetApi } from './src/Helpers/Service';
 import ImageCropPicker from 'react-native-image-crop-picker';
+import 'react-native-gesture-handler';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',

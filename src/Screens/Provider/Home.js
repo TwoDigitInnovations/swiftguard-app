@@ -1241,7 +1241,7 @@ const Home = props => {
                   styles.jobtitle,
                   { textAlign: 'left', color: Constants.white },
                 ]}>
-                {'My Confirmed Job(s)'}
+                {'My Confirmed Job'}
               </Text>
             </View>
             {upcomingJob.length > 0 ? upComingJobs() : DataLength(upcomingJob.length)}
@@ -1287,7 +1287,7 @@ const Home = props => {
               { flexDirection: 'row', alignItems: 'center' },
             ]}>
             <Text style={[styles.jobtitle, { color: Constants.white }]}>
-              My Pending Job(s)
+              My Pending Job
             </Text>
           </View>
           {DataLength(notilist.length)}
@@ -1342,7 +1342,7 @@ const Home = props => {
                 styles.jobtitle,
                 { textAlign: 'left', color: Constants.white },
               ]}>
-              Other Available Job(s)
+              Other Available Job
             </Text>
           </View>
           {DataLength(avalablaJobList.length)}

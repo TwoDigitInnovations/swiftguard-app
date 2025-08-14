@@ -431,7 +431,7 @@ const MyUpcomingJob = props => {
         )}
         {!jobfound && (
           <NojobFound
-            header="No comfirmed job(s) yet"
+            header="No confirmed job"
             height={Dimensions.get('window').height - 300}
           />
         )}

@@ -588,7 +588,75 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-
+  ///suspend model///
+  centeredView: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      // marginTop: 22,
+      backgroundColor: '#rgba(0, 0, 0, 0.5)',
+    },
+    modalView: {
+      margin: 17,
+      backgroundColor: 'white',
+      borderRadius: 10,
+      padding: 20,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+      position: 'relative',
+    },
+  
+    textStyle5: {
+      color: Constants.black,
+      textAlign: 'center',
+      fontFamily: 'Helvetica',
+      fontWeight: '800',
+      fontSize: 18,
+      marginRight:-35
+    },
+    textStyle4: {
+      color: Constants.customgrey2,
+      textAlign: 'center',
+      fontFamily: 'Helvetica',
+      fontWeight: '600',
+      fontSize: 14,
+      marginTop:10
+    },
+    modalText: {
+      color: Constants.white,
+      // fontWeight: 'bold',
+      textAlign: 'center',
+      fontFamily: 'Helvetica',
+      fontWeight: '700',
+      fontSize: 16,
+    },
+    logOutButtonStyle2: {
+      backgroundColor: Constants.red,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      height:45,
+      width:250,
+      marginTop:20
+    },
+     croscov:{
+      padding:7,
+      borderRadius:40,
+      borderWidth:1,
+      borderColor:Constants.red
+    },
+    covline: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
 });
 
 export default styles;

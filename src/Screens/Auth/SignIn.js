@@ -140,7 +140,7 @@ const SignIn = props => {
             if (res.data.type === 'PROVIDER') {
 
               console.log('sia--------->fromaaaa', res.data)
-              if (res.data.verified) {
+              if (res.data.verified==="true") {
                 // setInitial('provider');
                 // props.navigation.reset('provider', {
                 //   screen: 'Home',
@@ -163,13 +163,12 @@ const SignIn = props => {
                     // setInitial('provider');
                     props.navigation.navigate('ProfilePro');
                   } else {
-                    // setInitial('provider');
+                    props.navigation.navigate('ProfilePro');
+                    // props.navigation.navigate('provider', {
+                    //   screen: 'Home',
+                    //   params: { screen: 'ServiceProvider' },
+                    // });
                     // props.navigation.reset('provider')
-                    props.navigation.navigate('provider', {
-                      screen: 'Home',
-                      params: { screen: 'ServiceProvider' },
-                    });
-                    props.navigation.reset('provider')
                   }
                 }
 
@@ -567,6 +566,7 @@ const SignIn = props => {
           </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
+            
     </SafeAreaView>
   );
 };

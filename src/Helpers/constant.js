@@ -1,4 +1,6 @@
 const prodUrl = 'https://apis.jjowen.co.uk/v1/api/';
+// const prodUrl = 'http://192.168.0.187:3000/v1/api/';
+// const prodUrl = 'http://10.80.19.68:3000/v1/api/';
 const devUrl = 'http://192.168.0.107:3000/v1/api/';
 // const devUrl = 'http://192.168.1.11:3000/v1/api/';
 
