@@ -2,10 +2,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { View, Text, StatusBar, Platform } from 'react-native';
+import { View, Text, StatusBar, Platform, AsyncStorage } from 'react-native';
 import React, { useState, useEffect, createContext } from 'react';
 import MainRoutes from './src/Routes/MainRoutes';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OneSignal } from 'react-native-onesignal';
 import { Notifications } from 'react-native-notifications';
 import SpInAppUpdates, {
@@ -15,15 +15,15 @@ import SpInAppUpdates, {
 } from 'sp-react-native-in-app-updates';
 import DeviceInfo from 'react-native-device-info';
 import VersionInfo from 'react-native-version-info';
-import {
-  setJSExceptionHandler,
-  setNativeExceptionHandler,
-} from 'react-native-exception-handler';
+// import {
+//   setJSExceptionHandler,
+//   setNativeExceptionHandler,
+// } from 'react-native-exception-handler';
 import CustomToaster from './src/Component/CustomToaster';
 import Constants from './src/Helpers/constant';
 import { GetApi } from './src/Helpers/Service';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import 'react-native-gesture-handler';
+// import 'react-native-gesture-handler';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -51,11 +51,11 @@ const errorHandler = (e, isFatal) => {
   }
 };
 
-setJSExceptionHandler(errorHandler, true);
+// setJSExceptionHandler(errorHandler, true);
 
-setNativeExceptionHandler(errorString => {
-  console.log(errorString);
-});
+// setNativeExceptionHandler(errorString => {
+//   console.log(errorString);
+// });
 
 export const Context = React.createContext();
 export const ToastContext = React.createContext();

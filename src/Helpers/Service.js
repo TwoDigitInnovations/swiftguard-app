@@ -95,45 +95,45 @@ const Post = async (url, data, props) => {
 };
 
 const Put = async (url, data, props) => {
-  return new Promise(function (resolve, reject) {
-    ConnectionCheck.isConnected().then(
-      async connected => {
-        console.log(connected);
-        if (connected) {
-          const token = await AsyncStorage.getItem('token');
-          // let userDetail = JSON.parse(user);
-          console.log(Constants.baseUrl + url);
-          // console.log(`jwt ${userDetail?.token}`);
-          axios
-            .put(Constants.baseUrl + url, data, {
-              headers: {
-                Authorization: `jwt ${token}`,
-              },
-            })
-            .then(res => {
-              console.log(res.data);
-              resolve(res.data);
-            })
-            .catch(async err => {
-              if (err.response) {
-                if (err?.response?.status === 401) {
-                  props?.setInitial('Signin');
-                  await AsyncStorage.removeItem('userDetail');
-                  props?.navigation?.navigate('Signin');
-                }
-                resolve(err.response.data);
-              } else {
-                reject(err);
-              }
-            });
+  return new Promise(async function (resolve, reject) {
+    // ConnectionCheck.isConnected().then(
+    //   async connected => {
+    //     console.log(connected);
+    //     if (connected) {
+    const token = await AsyncStorage.getItem('token');
+    // let userDetail = JSON.parse(user);
+    console.log(Constants.baseUrl + url);
+    // console.log(`jwt ${userDetail?.token}`);
+    axios
+      .put(Constants.baseUrl + url, data, {
+        headers: {
+          Authorization: `jwt ${token}`,
+        },
+      })
+      .then(res => {
+        console.log(res.data);
+        resolve(res.data);
+      })
+      .catch(async err => {
+        if (err.response) {
+          if (err?.response?.status === 401) {
+            props?.setInitial('Signin');
+            await AsyncStorage.removeItem('userDetail');
+            props?.navigation?.navigate('Signin');
+          }
+          resolve(err.response.data);
         } else {
-          reject('No internet connection');
+          reject(err);
         }
-      },
-      err => {
-        reject(err);
-      },
-    );
+      });
+    //       } else {
+    //         reject('No internet connection');
+    //       }
+    //     },
+    //     err => {
+    //       reject(err);
+    //     },
+    //   );
   });
 };
 
